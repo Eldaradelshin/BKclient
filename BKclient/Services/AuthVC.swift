@@ -9,6 +9,8 @@
 import UIKit
 import WebKit
 
+let userDefaults = UserDefaults.standard
+
 class AuthVC: UIViewController {
     
     
@@ -69,14 +71,21 @@ extension AuthVC: WKNavigationDelegate {
         }
         
         let token = params["access_token"]
+        userDefaults.set(token!, forKey: "token")
+        let userID = params["user_id"]
+        userDefaults.set(userID, forKey: "userID")
         
-        globalToken = token!
-        decisionHandler(.cancel)
         
         performSegue(withIdentifier: "toLoginPage", sender: token)
+        
+        decisionHandler(.cancel)
+        
+    }
+    
+    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
     }
 }
-var globalToken: String = ""
+
         
 
 

@@ -46,24 +46,52 @@
             </objects>
             <point key="canvasLocation" x="-532" y="-435"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Друзья-->
         <scene sceneID="4Iz-5U-EeM">
             <objects>
-                <tableViewController id="l1u-sr-kJI" sceneMemberID="viewController">
+                <tableViewController title="Друзья" id="l1u-sr-kJI" customClass="AllFriendsVC" customModule="BKclient" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ufm-9X-saV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="rmD-Dq-a9x">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendCell" id="rmD-Dq-a9x" customClass="AllFriendsCell" customModule="BKclient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rmD-Dq-a9x" id="tTA-uc-uBG">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lmy-eG-fIb">
+                                            <rect key="frame" x="10" y="0.5" width="42" height="42"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="42" id="1tK-PJ-O4y"/>
+                                                <constraint firstAttribute="height" constant="42" id="Gv6-Q2-QNU"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMY-Zy-m1e">
+                                            <rect key="frame" x="62" y="12" width="300" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="7or-9E-jXY"/>
+                                                <constraint firstAttribute="height" constant="21" id="oRD-hz-1HP"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lmy-eG-fIb" firstAttribute="leading" secondItem="tTA-uc-uBG" secondAttribute="leading" constant="10" id="Aey-31-0wr"/>
+                                        <constraint firstItem="NMY-Zy-m1e" firstAttribute="centerY" secondItem="tTA-uc-uBG" secondAttribute="centerY" id="XVP-aw-AYY"/>
+                                        <constraint firstItem="lmy-eG-fIb" firstAttribute="centerY" secondItem="tTA-uc-uBG" secondAttribute="centerY" id="b0v-cK-UFK"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="NMY-Zy-m1e" secondAttribute="trailing" constant="10" id="vcj-mJ-qTf"/>
+                                        <constraint firstItem="NMY-Zy-m1e" firstAttribute="leading" secondItem="lmy-eG-fIb" secondAttribute="trailing" constant="10" id="w1v-2R-Nid"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="5tz-Ks-Yhg" kind="show" id="qHC-OM-D4V"/>
+                                    <outlet property="PhotoImage" destination="lmy-eG-fIb" id="ywe-8u-27J"/>
+                                    <outlet property="nameLabel" destination="NMY-Zy-m1e" id="E0S-sB-ayb"/>
+                                    <segue destination="5tz-Ks-Yhg" kind="show" identifier="toPhoto" id="NEg-gL-4gl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -72,34 +100,51 @@
                             <outlet property="delegate" destination="l1u-sr-kJI" id="t3H-qh-zcF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="bH3-o7-uuf"/>
+                    <navigationItem key="navigationItem" title="Друзья" id="bH3-o7-uuf"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yko-mp-1gG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1929" y="-436"/>
+            <point key="canvasLocation" x="1928.8" y="-436.73163418290858"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Фото-->
         <scene sceneID="Tui-DZ-1tS">
             <objects>
-                <collectionViewController id="5tz-Ks-Yhg" sceneMemberID="viewController">
+                <collectionViewController title="Фото" id="5tz-Ks-Yhg" customClass="FriendsPhotosVC" customModule="BKclient" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="qyc-yG-ZVm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KQe-vY-yDP">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="150" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="zDg-59-71a">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="zDg-59-71a" customClass="PhotoCell" customModule="BKclient" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="opc-lI-OSU">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="150" id="mNb-Eg-Zai"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="opc-lI-OSU" firstAttribute="top" secondItem="zDg-59-71a" secondAttribute="top" id="8gt-bk-mgX"/>
+                                    <constraint firstAttribute="width" secondItem="opc-lI-OSU" secondAttribute="width" id="BTk-MP-BBw"/>
+                                    <constraint firstItem="opc-lI-OSU" firstAttribute="leading" secondItem="zDg-59-71a" secondAttribute="leading" id="UgL-5G-cd4"/>
+                                    <constraint firstAttribute="height" secondItem="opc-lI-OSU" secondAttribute="height" id="cFv-rH-rce"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="photoView" destination="opc-lI-OSU" id="Ons-KN-PrE"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -110,7 +155,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvC-jJ-sgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2799" y="-431"/>
+            <point key="canvasLocation" x="2797.5999999999999" y="-436.73163418290858"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="1nc-QD-vji">
