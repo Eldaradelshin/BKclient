@@ -7,20 +7,23 @@
 //
 
 import Foundation
-import UIKit
-import SwiftyJSON
+
 
 class Friend {
-    var id = 0
-    var firstName = ""
-    var lastName = ""
-    var photoUrl = ""
     
-    convenience init(json: JSON) {
-        self.init()
-        id = json["id"].intValue
-        firstName = json["first_name"].stringValue
-        lastName = json["last_name"].stringValue
-        photoUrl = json["photo_50"].stringValue
+    var id : UInt
+    var firstName : String
+    var lastName : String
+    var smallPhotoURL : String
+    var bigPhotoURL : String
+    
+    init( _ user : Any) {
+        let user  = user as? [String: Any]
+        self.id = user!["user_id"] as! UInt
+        self.firstName = user!["first_name"] as! String
+        self.lastName = user!["last_name"] as! String
+        self.smallPhotoURL = user!["photo_50"] as! String
+        self.bigPhotoURL = user!["photo_100"] as! String
     }
 }
+

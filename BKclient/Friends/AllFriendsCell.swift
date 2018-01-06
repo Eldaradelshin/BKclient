@@ -10,6 +10,8 @@ import UIKit
 
 class AllFriendsCell: UITableViewCell {
     
+    var idFrend : UInt!
+    
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var photoImage: UIImageView!
@@ -26,4 +28,15 @@ class AllFriendsCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+
+extension UIImageView{
+    
+    func setImageFromURl(stringImageUrl url: String){
+        if let url = NSURL(string: url) {
+            if let data = NSData(contentsOf: url as URL) {
+                self.image = UIImage(data: data as Data)
+            }
+        }
+    }
 }

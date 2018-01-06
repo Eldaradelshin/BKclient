@@ -7,7 +7,6 @@ target 'BKclient' do
 
   # Pods for BKclient
   pod 'Alamofire', '~> 4.5'
-  pod 'SwiftyJSON'
-  pod 'RealmSwift'
+
 
 end
